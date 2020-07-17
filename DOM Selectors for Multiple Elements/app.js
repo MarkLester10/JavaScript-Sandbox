@@ -12,7 +12,7 @@ const listsItems = document
 
 console.log(listsItems);
 
-document.getElementsByTagName;
+//document.getElementsByTagName;
 let lis = document.getElementsByTagName("li"); //return HTML Collection
 
 console.log(lis);
