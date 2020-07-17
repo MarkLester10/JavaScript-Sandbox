@@ -2,6 +2,8 @@ let val;
 
 //document.getElementById()
 val = document.getElementById("task-title");
+
+document.getElem;
 const taskTitle = val;
 
 //Get things from the element
