@@ -10,7 +10,6 @@ val = document.head;
 val = document.body;
 val = document.doctype;
 val = document.domain;
-val = document.domain;
 //gives you the whole url
 val = document.URL;
 val = document.characterSet;
