@@ -38,4 +38,4 @@ val = document.querySelector("li:nth-child(4)").textContent = "Hello World";
 val = document.querySelector("li:nth-child(odd)").style.background = "yellow";
 val = document.querySelector("li:nth-child(even)").style.background = "blue";
 
-console.log(val);
+// console.log(val);
