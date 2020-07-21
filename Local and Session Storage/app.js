@@ -35,7 +35,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
   tasks.push(task);
 
   //set to local storage
-  localStorage.setItem("tasks", JSON.stringify(tasks)); //since tasks is an object we need to convert it to string using JSON.stringify
+  localStorage.setItem("tasks", JSON.stringify(tasks)); //since tasks is an object/array we need to convert it to string using JSON.stringify
   alert("Task Saved!");
   e.preventDefault();
 });
