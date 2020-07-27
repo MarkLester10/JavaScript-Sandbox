@@ -46,17 +46,10 @@ class UI {
       button.className = "btn btn-block btn-dark d-block";
 
       //show success alert
-      if (localStorage.getItem("books") === null && !book) {
-        this.showAlert(
-          "There are no books in you local storage",
-          "alert alert-info d-block"
-        );
-      } else {
-        this.showAlert(
-          "Book added Successfully",
-          "alert alert-success d-block"
-        );
-      }
+      this.showAlert(
+        "Thanks! Keep adding books now",
+        "alert alert-success d-block"
+      );
     }, 3000);
   }
 
@@ -123,7 +116,17 @@ class Store {
 }
 
 //DOM load event listener
-document.addEventListener("DOMContentLoaded", Store.displayBooks());
+document.addEventListener("DOMContentLoaded", function () {
+  books = Store.getBooks();
+  if (localStorage.getItem("books") === null || books.length === 0) {
+    const ui = new UI();
+    ui.showAlert(
+      "There are no books in your local storage",
+      "alert alert-info d-block"
+    );
+  }
+  Store.displayBooks();
+});
 
 //Event Listener for add
 document.getElementById("book-form").addEventListener("submit", function (e) {
