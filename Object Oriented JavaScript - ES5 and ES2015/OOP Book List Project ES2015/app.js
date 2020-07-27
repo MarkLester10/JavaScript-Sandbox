@@ -46,7 +46,10 @@ UI.prototype.addBookToList = function (book) {
     button.className = "btn btn-block btn-dark d-block";
 
     //show success alert
-    this.showAlert("Book added Successfully", "alert alert-success d-block");
+    this.showAlert(
+      "Thanks! Keep adding books now",
+      "alert alert-success d-block"
+    );
   }, 2000);
 };
 
@@ -160,13 +163,14 @@ document.getElementById("book-list").addEventListener("click", function (e) {
 
 //DOM Event Listener
 document.addEventListener("DOMContentLoaded", function () {
-  if (localStorage.getItem("books") === null) {
+  const store = new Store();
+  const books = store.getBooks();
+  if (localStorage.getItem("books") === null || books.length === 0) {
     const ui = new UI();
     ui.showAlert(
       "There are no books in your local storage",
       "alert alert-info d-block"
     );
   }
-  const store = new Store();
   store.displayBooks();
 });
