@@ -38,12 +38,12 @@ class UI {
       //append to list
       list.appendChild(row);
 
+      //add to local storage
+      Store.addBook(book);
+
       //remove spinner
       spinner.className = "d-none";
       button.className = "btn btn-block btn-dark d-block";
-
-      //add to local storage
-      Store.addBook(book);
 
       //show success alert
       if (localStorage.getItem("books") === null && !book) {

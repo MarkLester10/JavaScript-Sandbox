@@ -1,8 +1,15 @@
 //ES2015 or ES5
 
 //globals
-spinner = document.getElementById("spinner");
-button = document.getElementById("submit");
+const spinner = document.getElementById("spinner");
+const button = document.getElementById("submit");
+const list = document.getElementById("book-list");
+document.getElementById("clear").addEventListener("mousedown", function () {
+  const ui = new UI();
+  ui.showAlert("Book List Cleared Successfully", "alert alert-success d-block");
+  list.innerHTML = "";
+  localStorage.clear();
+});
 
 //Book Cosntructor
 function Book(title, author, isbn) {
@@ -18,7 +25,6 @@ UI.prototype.addBookToList = function (book) {
   spinner.className = "d-block";
   button.className = "btn btn-block btn-dark d-none";
   setTimeout(() => {
-    const list = document.getElementById("book-list");
     //Create tr element
     const row = document.createElement("tr");
     //Insert td's
@@ -31,15 +37,16 @@ UI.prototype.addBookToList = function (book) {
     //append to list
     list.appendChild(row);
 
+    //Store to local storage
+    const store = new Store();
+    store.addBook(book);
+
     //remove spinner
     spinner.className = "d-none";
     button.className = "btn btn-block btn-dark d-block";
 
     //show success alert
-    this.showAlert(
-      "New Book Added Successfully",
-      "alert alert-success d-block"
-    );
+    this.showAlert("Book added Successfully", "alert alert-success d-block");
   }, 2000);
 };
 
@@ -68,6 +75,44 @@ UI.prototype.showAlert = function (message, type) {
   setTimeout(function () {
     alert.className = "alert alert-success d-none";
   }, 3000);
+};
+
+//Local Storage Constructors
+function Store() {}
+Store.prototype.getBooks = function () {
+  let books;
+  if (localStorage.getItem("books") === null) {
+    books = [];
+  } else {
+    books = JSON.parse(localStorage.getItem("books"));
+  }
+  return books;
+};
+
+Store.prototype.displayBooks = function () {
+  const books = this.getBooks();
+
+  books.forEach(function (book) {
+    const ui = new UI();
+    ui.addBookToList(book);
+  });
+};
+
+Store.prototype.addBook = function (book) {
+  const books = this.getBooks();
+  books.push(book);
+
+  localStorage.setItem("books", JSON.stringify(books));
+};
+
+Store.prototype.removeBook = function (isbn) {
+  const books = this.getBooks();
+  books.forEach(function (book, idx) {
+    if (book.isbn === isbn) {
+      books.splice(idx, 1);
+    }
+  });
+  localStorage.setItem("books", JSON.stringify(books));
 };
 
 //Event Listener for add
@@ -99,8 +144,29 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
 //Event Listener for delete
 document.getElementById("book-list").addEventListener("click", function (e) {
   const ui = new UI();
+  //remove from ui
   ui.deleteBook(e.target.parentElement);
+
+  //remove from local storage
+  const isbnNo =
+    e.target.parentElement.parentElement.previousElementSibling.textContent;
+  const store = new Store();
+  store.removeBook(isbnNo);
+
   //show alert
   ui.showAlert("Book Deleted Successfully", "alert alert-success d-block");
   e.preventDefault();
+});
+
+//DOM Event Listener
+document.addEventListener("DOMContentLoaded", function () {
+  if (localStorage.getItem("books") === null) {
+    const ui = new UI();
+    ui.showAlert(
+      "There are no books in your local storage",
+      "alert alert-info d-block"
+    );
+  }
+  const store = new Store();
+  store.displayBooks();
 });
