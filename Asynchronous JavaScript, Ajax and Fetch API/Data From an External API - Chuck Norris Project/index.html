@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data From an External API - Chuck Norris Project</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+    .alert.error {
+      border: 1px solid rgb(223, 89, 89);
+      color: rgb(223, 89, 89);
+    }
+
+    #joke-heading {
+      display: none;
+    }
+
+    .alert.success {
+      border: 1px solid rgb(62, 173, 95);
+      color: rgb(62, 173, 95);
+    }
+
+    li {
+      list-style: none;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: rgb(235, 235, 235);
+      font-size: 25px;
+    }
+
+    .container {
+      width: 500px;
+    }
+
+    .loader {
+      padding: 20px;
+      display: none;
+      position: relative;
+      width: 50px;
+      height: 50px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .loader div {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .loader div:nth-child(1) {
+      border-left: 5px solid #212121;
+      animation: rotate 1.5s ease-in infinite;
+    }
+    .loader div:nth-child(2) {
+      border-right: 5px solid red;
+      animation: rotate3 1.5s ease-in infinite;
+    }
+    .loader div:nth-child(1) {
+      border-top: 5px solid yellow;
+      animation: rotate2 1.5s ease-in infinite;
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes rotate2 {
+      to {
+        transform: rotateX(360deg);
+      }
+    }
+
+    @keyframes rotate3 {
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1 style="text-align: center;">Chuck Norris Joke Generator</h1>
+      <div class="row">
+        <div class="twelve columns">
+          <form>
+            <div id="alert"></div>
+            <label for="number">Number of Jokes</label>
+            <input class="u-full-width" type="number" id="number" />
+            <label for="category">Category</label>
+            <select class="u-full-width" id="category">
+              <option value=""></option>
+              <option value="random">Random</option>
+              <option value="explicit">Explicit Jokes</option>
+              <option value="nerdy">Nerdy Jokes</option>
+            </select>
+            <button class="get-jokes u-full-width">Get Jokes</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="twelve columns">
+          <div class="container" style="text-align: center;">
+            <div class="loader">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <h2 id="joke-heading">Jokes of the day</h2>
+            <ul class="jokes"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
