@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What is Asynchronous Programming</title>
+  </head>
+  <body>
+    <h1>What is Asynchronous Programming?</h1>
+    <p>
+      First, let's talk about what is <strong>Synchronous Code</strong> <hr />
+     <strong>
+      posts = loadPostsSync(); <br />
+      // ...wait till posts are fetched <br />
+      // ...do something with posts <br /> <br>
+      doTheNextThing(); // ...wait until posts load
+     </strong>
+    </p>
+    <p></p>
+      Now in this way of writing this code we're going to have to wait until
+      posts are fetched and then do something with the post and then only after
+      that's done can we move on to the
+      <strong>doTheNextThing</strong> function.
+    </p>
+    <p>This is what called <strong>Blocking Code</strong></p>
+    <br>
+    <br>
+    <p>
+      Then, let's talk about what is <strong>Asynchronous Code</strong> <hr>
+     <strong>
+      loadPostsSync(function(){
+        // ...wait till posts are fetched <br />
+        // ...do something with posts <br />
+      }); <br /><br>
+      doTheNextThing(); // ...doesn't have to wait until posts load
+     </strong>
+    </p>
+     In this case instead of just pulling the post out of a synchronous function we're passing in a <strong>callback function which is just one method for handling asynchronous code.</strong> This callback will run and fetch the posts and allow us to do something with the post, But the doTheNextThing function does not have to wait until the post are fetched and loaded. 
+    </p>
+    <p>This is what called <strong>Asynchronous Code</strong> the program isn't blocked and it will simple just keep going even if it takes a while for the post to be fetched it's not going to stop the doTheNextThing function from running</p>
+    <strong>In turn, this is much faster and that's the beauty of asynchronous javascript and asynchronous programming in general</strong>
+    <hr>
+    <h2>Most of the Async Code you work with will be part of an API or library</h2>
+    <ul>
+      <li>XMLHttpRequest & Fetch</li>
+      <li>JQuery Ajax, Axios, other HTTP libraries</li>
+      <li>Node.js fs (filesystem) module</li>
+    </ul>
+    <h2>There are few ways to work with Async Code</h2>
+    <ul>
+      <li>Callbacks</li>
+      <li>Promises</li>
+      <li>Async/Await</li>
+    </ul>
+  </body>
+</html>
