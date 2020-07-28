@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Mark Lester Morta",
+    "company": "Google",
+    "job": "Full-Stack Web Developer",
+    "phone": "234-2342-234"
+  },
+  {
+    "id": 2,
+    "name": "Mark Lester Morta III",
+    "company": "Facebook",
+    "job": "Full-Stack JavaScript Developer",
+    "phone": "234-2342-234"
+  },
+  {
+    "id": 3,
+    "name": "John Dog",
+    "company": "Twitter",
+    "job": "React Developer",
+    "phone": "234-2342-234"
+  },
+  {
+    "id": 4,
+    "name": "Mark Perry",
+    "company": "Microsoft",
+    "job": "Software Engineer",
+    "phone": "234-2342-234"
+  },
+  {
+    "id": 5,
+    "name": "Lester Williams",
+    "company": "Instagram",
+    "job": "Full-Stack Web Developer",
+    "phone": "234-2342-234"
+  }
+]
