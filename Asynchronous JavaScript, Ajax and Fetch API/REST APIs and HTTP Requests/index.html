@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REST APIs and HTTP Requests</title>
+  </head>
+  <body>
+    <h1>REST APIs and HTTP Requests</h1>
+    <ul>
+      <li>Application Programming Interface</li>
+      <li>Contract provided by one piece of software to another</li>
+      <li>Structured request and response</li>
+    </ul>
+    <h2>
+      REST APIs
+    </h2>
+    <ul>
+      <li><strong>Representational State Transfer</strong></li>
+      <li>Architecture style for designing networked applications</li>
+      <li>Relies on a stateless, client-server protocol, almost always HTTP</li>
+      <li>
+        Treats server objects as resources that can be created or destroyed
+      </li>
+      <li>Can be used by virtulally any programming language</li>
+      <li>All APIs have their own rules and structure</li>
+    </ul>
+    <h2>HTTP Requests</h2>
+    <ul>
+      <li><strong>GET: Retrieve data from a specified resource</strong></li>
+      <li>
+        <strong
+          >POST: Submit data to be processed to a specified resource</strong
+        >
+      </li>
+      <li><strong>PUT: Update a specified resource</strong></li>
+      <li><strong>DELETE: Delete specified resource</strong></li>
+    </ul>
+    <hr />
+    <ul>
+      <li>HEAD: Same as get but does not return a body</li>
+      <li>OPTIONS: Returns the supported HTTP methods</li>
+      <li>PATCH: Update partial resources</li>
+    </ul>
+    <h2>API Endpoints</h2>
+    <li>
+      GET &ThickSpace; https://someurl.com/api/users &ThickSpace; //Get all
+      users
+    </li>
+    <li>
+      GET &ThickSpace; https://someurl.com/api/users/1 &ThickSpace; //Get single
+      user
+    </li>
+    <li>
+      GET &ThickSpace; https://someurl.com/api/users &ThickSpace; //Add user
+    </li>
+    <li>
+      GET &ThickSpace; https://someurl.com/api/users/1 &ThickSpace; //Update
+      user
+    </li>
+    <li>
+      GET &ThickSpace; https://someurl.com/api/users/1 &ThickSpace; //Delete
+      user
+    </li>
+    <script src="./app.js"></script>
+  </body>
+</html>
