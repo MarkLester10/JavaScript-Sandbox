@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow Function</title>
+  </head>
+  <body>
+    <h1>Arrow Function</h1>
+    <p>
+      Arrow function is the most important part of JavaScript ES6 module. It
+      makes your code cleaner and shorter. <br />It uses the
+      <strong>Lexical this</strong> to persist the `this` keyword when you're
+      accessing it inside a function that points to another instance or make the
+      `this` keyword out of scope
+    </p>
+    <p>
+      It solves the issue of assigning the `this` keyword to a variable in order
+      to access it inside inner functions
+    </p>
+    <blockquote>
+      BEFORE: <br />
+      <br />
+      const someFunction = function(){ <br />
+      const that = this; <br />
+      function() { <br />
+      if(that.status){ <br />
+      ..// do something <br />
+      } <br />
+      &ThickSpace;} <br />
+      }
+    </blockquote>
+    <hr />
+    <blockquote>
+      Arrow Function: <br />
+      <br />
+      const someFunction = () => { <br />
+      function() { <br />
+      if(this.status){ <br />
+      ..// do something <br />
+      } <br />
+      &ThickSpace;} <br />
+      }
+    </blockquote>
+    <script src="./app.js"></script>
+  </body>
+</html>
