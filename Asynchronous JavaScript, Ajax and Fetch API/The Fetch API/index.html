@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Fetch API</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>The Fetch Api</h1>
+      <strong><small>Newer standard for dealing with HTTP Requests</small></strong> <br><br>
+      <button id="button1">Get Text</button>
+      <button id="button2">Get JSON</button>
+      <button id="button3">Get API Data</button>
+      <br />
+      <div id="output"></div>
+    </div>
+
+    <div class="container" style="margin-top: 50px;">
+      <h3>Fetch API Error Handling</h3>
+      <p>
+        If there is an http error, it will not fire off .catch automatically.
+        You have to check the response and throw an error yourself. Here is an
+        example....
+      </p>
+      <blockquote>
+        <strong>
+          fetch('https://devcamper.io/api/v1/bootcamps/34343') <br />
+          .then(res => res.json()) <br />
+          .then(res => <br />
+          { <br />
+          if (!res.ok) { <br />
+          throw new Error(res.error); <br />
+          } <br />
+          return res; <br />
+          }) <br />
+          .catch(err => console.log(err));
+          <hr />
+          <p>
+            I would suggest creating a separate function for error handling
+            <br />
+            <br />
+            function handleErrors(res) { <br />
+            if (!res.ok) throw new Error(res.error); <br />
+            return res; }
+            <hr>
+            fetch('https://devcamper.io/api/v1/bootcamps/34343') <br />
+            .then(res => res.json()) <br />
+            .then(handleErrors) <br />
+            .catch(err => console.log(err));
+          </p>
+        </strong>
+      </blockquote>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
