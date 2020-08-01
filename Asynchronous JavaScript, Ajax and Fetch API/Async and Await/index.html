@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async and Await</title>
+  </head>
+  <body>
+    <h1>Async and Await</h1>
+    <p>
+      Part of the ES7 or ES2016 standard and it's fully implemented in chrome
+      but not sure with the other browser.
+    </p>
+
+    <h3>Async Function</h3>
+    <p>
+      Adding <strong>async</strong> to the beginning of a function makes it
+      returns a Promise
+    </p>
+    <blockquote>
+      <strong>async</strong> function myFunct() { <br />
+      return "Hello"; <br />
+      } <br />
+      <br />
+      myFunct().then((res) => console.log(res));
+    </blockquote>
+
+    <p>
+      If you want something to make asynchronous within that function we can use
+      await to actually waits until that's resolved
+    </p>
+    <blockquote>
+      <strong>async</strong> function myFunct() { <br />
+      const promise = new Promise((resolve, reject) => { <br />
+      setTimeout(() => resolve("Hello World"), 5000); <br />
+      }); <br />
+      <br />
+      //throw errors <br />
+      const err = false; <br />
+      if(!err) { <br />
+      const res = await promise; //waits until promise is resoved <br />
+      return res; <br />
+      } else { <br />
+      await Promise.reject(new Error("Something went wrong")); <br />
+      &ThickSpace;} <br />
+      } <br /><br />
+      myFunct() .then((res) => console.log(res)) .catch((err) =>
+      console.log(err));
+    </blockquote>
+
+    <h2><strong>The best case to use it, is with Fetch Api :)</strong></h2>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
