@@ -9,9 +9,12 @@
         html {
         position: relative;
         min-height: 100%;
+        scroll-behavior: smooth;
         }
         body {
         margin-bottom: 60px; /* Margin bottom by footer height */
+        background: url("https://images.pexels.com/photos/776656/pexels-photo-776656.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=900") center;
+        object-fit: cover;
         }
         .footer {
         position: absolute;
@@ -21,14 +24,20 @@
         line-height: 60px; /* Vertically center the text there */
         background-color: #f5f5f5;
         }
+        .container, .navbar {
+          background: transparent
+        }
     </style>
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">Github Finder</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand d-flex align-items-center" style="justify-content: space-evenly;" href="#search">
+              <img src="https://pngimg.com/uploads/github/github_PNG15.png" class="img-fluid" style="width: 100px;" alt="">
+              Finder
+            </a>
+        <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
@@ -58,28 +67,48 @@
             </li>
             
           </ul>
-          <!-- <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-          </form> -->
         </div>
         </div>
       </nav>
+      <br>
 
-      <!-- Search section -->
-      <div class="mt-3 container searchContainer" style="width: 768px">
-        <div class="card mb-3 ">
-            <h3 class="card-header bg-dark text-white">Search Github Users</h3>
-            <div class="card-body">
-              <p class="card-title text-muted">Enter a username to fetch a user profile and repos</h5>
-            <div class="form-group">
-            <input type="text" class="form-control" id="searchUser"  placeholder="Github Username">
+      <div class="container" style="width: 768px;">
+       
+        <!-- jumbotron -->
+        <div class="alert alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            <div class="jumbotron rounded">
+              <h1 class="display-3">Hello, People!</h1>
+              <p class="lead">I'm <strong class="badge badge-dark badge-pill">Mark Lester Morta</strong> an aspiring Full-Stack Developer. This is a simple project as part of my javascript challenge for myself <strong class="badge badge-dark badge-pill">#100DaysOfCode</strong> </p>
+              <hr class="my-4">
+              <p>It uses the latest ES6/ES7 features like fetch API and Async/Await in an object-oriented approach and more!</p>
+              <p class="lead">
+                <a class="btn btn-primary btn-md" href="https://github.com/MarkLester10/JavaScript-Sandbox" role="button">More with my JavaScript Sandbox</a>
+              </p>
             </div>
-            <div id="profile"></div>
+        </div>
+        <!-- !end of jumbotron -->
+  
+        <!-- Search section -->
+        <div class="mt-3 container searchContainer">
+          <div class="card mb-3 ">
+              <h3 class="card-header bg-primary text-white" >Github User Profile</h3>
+              <div class="card-body">
+                <p class="card-title text-muted">Enter a username to fetch a user profile and repos</h5>
+              <div class="form-group">
+              <input type="text" class="form-control" id="searchUser"  placeholder="Github Username">
+              <div id="message"></div>
+              </div>
+              <div id="profile"></div>
+              </div>
             </div>
-          </div>
+        </div>
+        <!-- end of search section -->
       </div>
-      <!-- end of search section -->
+
+
       <br>
       <!-- footer -->
       <footer class="footer">
