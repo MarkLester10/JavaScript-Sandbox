@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+
+</head>
+<body>
+  <div class="container">
+    <div class="weather-side">
+        <div class="weather-gradient"></div>
+        <div class="date-container">
+            <h2 class="date-dayname"></h2><span class="date-day"></span><i class="location-icon" data-feather="map-pin"></i><span class="location"></span></div>
+        <div class="weather-container"><i class="weather-icon" data-feather="sun"></i>
+            <h1 class="weather-temp"></h1>
+            <img src="" id="icon" alt="#">
+            <h3 class="weather-desc"></h3>
+        </div>
+    </div>
+    <div class="info-side">
+        <div class="today-info-container">
+            <div class="today-info">
+                <div class="precipitation"> <span class="title">PRECIPITATION</span><span id="precipitation" class="value"></span>
+                    <div class="clear"></div>
+                </div>
+                <div class="humidity"> <span class="title">HUMIDITY</span><span class="value" id="humidity"></span>
+                    <div class="clear"></div>
+                </div>
+                <div class="wind"> <span class="title">WIND</span><span class="value" id="wind"></span>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="week-container">
+            <ul class="week-list">
+                <li class="active"><i class="day-icon" data-feather="sun"></i><span class="day-name">Tue</span><span class="day-temp">29°C</span></li>
+                <li><i class="day-icon" data-feather="cloud"></i><span class="day-name">Wed</span><span class="day-temp">21°C</span></li>
+                <li><i class="day-icon" data-feather="cloud-snow"></i><span class="day-name">Thu</span><span class="day-temp">08°C</span></li>
+                <li><i class="day-icon" data-feather="cloud-rain"></i><span class="day-name">Fri</span><span class="day-temp">19°C</span></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="location-container"><a class="location-button" id="modal" href="#animatedModal"> <i data-feather="map-pin"></i><span>Change location</span></a></div>
+    </div>
+</div>
+
+
+ <!--modal content-->
+ <div id="animatedModal">
+     <div class="close-animatedModal"> 
+      <ion-icon name="close-circle-outline" class="close"></ion-icon>
+     </div>
+         
+     <div class="modal-content">
+          <div class="modal-container">
+              <h2 class="modal-heading">Location</h2>
+              
+                <form id="w-form">
+
+                <label for="state">Country</label>
+                <input type="text" id="country" placeholder="PH">
+
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="City">
+
+                </form>
+              
+              <button type="button" id="w-change-btn" class="location-button">Save Changes</button>
+          </div>
+     </div>
+ </div>
+
+ <footer>
+    <div class="cc">
+      Mark Lester Morta &copy; 2020
+    </div>
+ </footer>
+
+ <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+ <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+ <script src="./animatedModal.js-master/animatedModal.js"></script>
+ <script src="./js/weather.js"></script>
+ <script src="./js/storage.js"></script>
+ <script src="./js/ui.js"></script>
+ <script src="./js/app.js"></script>
+ <script>
+  $(document).ready(function(){
+    $("#modal").animatedModal({
+      animatedIn:'lightSpeedIn',
+      animatedOut:'bounceOutDown',
+    });
+  });
+</script>
+</body>
+</html>
