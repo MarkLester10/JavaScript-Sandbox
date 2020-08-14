@@ -48,7 +48,7 @@ body {
     position: relative;
     height: 100%;
     border-radius: 25px;
-    background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80");
+   background-image: url("https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     width: 300px;
     -webkit-box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
             box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
@@ -73,7 +73,10 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    background-image: var(--gradient);
+    background: #134E5E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     border-radius: 25px;
     opacity: 0.8;
 }
@@ -110,6 +113,7 @@ body {
     left: 25px;
 }
 
+
 .weather-icon.feather {
     height: 60px;
     width: auto;
@@ -118,12 +122,13 @@ body {
 .weather-temp {
     margin: 0;
     font-weight: 700;
-    font-size: 4em;
+    font-size: 2em;
 }
 
 .weather-desc {
     margin: 0;
 }
+
 
 .info-side {
     position: relative;
@@ -153,6 +158,7 @@ body {
 }
 
 .week-list {
+    overflow: hidden;
     list-style-type: none;
     padding: 0;
     margin: 10px 35px;
@@ -162,6 +168,7 @@ body {
 }
 
 .week-list>li {
+    margin-right: 10px;
     float: left;
     padding: 15px;
     cursor: pointer;
@@ -170,22 +177,55 @@ body {
     transition: 200ms ease;
     border-radius: 10px;
 }
+.week-list li.sunset{
+    background-image: url("https://images.pexels.com/photos/289618/pexels-photo-289618.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+background-position: top;
+object-fit: cover;
+}
 
 .week-list>li:hover {
     -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
             transform: scale(1.1);
-    background: #fff;
-    color: #222831;
     -webkit-box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
             box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2)
 }
 
-.week-list>li.active {
-    background: #fff;
-    color: #222831;
+.week-list li.sunrise {
+    background-image: url("https://images.pexels.com/photos/1008737/pexels-photo-1008737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    object-fit: cover;
+    background-position: center;
     border-radius: 10px;
 }
+
+.week-list li .iconic{
+    font-size: 35px; 
+    position: relative;
+    top: 2rem;
+    color: #ffffff;
+    transition: all .5s ease;
+}
+
+.week-list li:hover .iconic.icon1{
+    transform: rotate(180deg);
+}
+
+.week-list li:hover .iconic.icon2{
+    animation: animate 1s ease forwards;
+}
+
+@keyframes animate{
+    from{
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 
 .week-list>li .day-name {
     display: block;

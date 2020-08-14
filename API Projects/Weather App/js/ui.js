@@ -9,14 +9,18 @@ class UI{
     this.humidity = document.querySelector("#humidity");
     this.wind = document.querySelector("#wind");
     this.icon = document.querySelector("#icon")
+    this.sunrise = document.querySelector("#sunrise");
+    this.sunset = document.querySelector("#sunset");
+    this.weatherGradient = document.querySelector(".weather-gradient");
 
     this.days = ["Sunday", "Monday","Tuesday", "Wednesday","Thursday", "Friday", "Saturday"];
   }
 
   paint(data){
+
     this.dateDayname.textContent = this.days[new Date(data.dt).getDay()];
 
-    this.dateDay.textContent = this.timeConverter(data.dt);
+    this.dateDay.textContent = this.dateConverter(data.dt);
 
     this.location.textContent = `${data.name}, ${data.sys.country}`
 
@@ -24,22 +28,66 @@ class UI{
 
     this.weatherDesc.textContent = data.weather[0].description;
 
-    this.weatherTemp.textContent = Math.round(parseFloat(data.main.temp)-273.15) + '°C';
+    this.weatherTemp.textContent = `${this.toCelcius(data.main.temp)} °C / ${this.toFahrenheit(data.main.temp)} °F `;
+    
 
     this.humidity.textContent = data.main.humidity + '%';
-    this.precipitation.textContent = data.rain[0];
+
+    this.precipitation.textContent = `${data.clouds.all} %`;
+  
+
+    this.sunrise.textContent =  this.timeConverter12hr(data.sys.sunrise, data.timezone);
+
+    this.sunset.textContent = this.timeConverter12hr(data.sys.sunset, data.timezone);
+
+    this.wind.textContent = `${data.wind.speed} m/s`;
   }
 
 
     //convert date
-   timeConverter(UNIX_timestamp){
-    var a = new Date(UNIX_timestamp * 1000);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
-    var time = `${date} ${month} ${year}`
-    return time;
+   dateConverter(UNIX_timestamp){
+    const a = new Date(UNIX_timestamp * 1000);
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const year = a.getFullYear();
+    const month = months[a.getMonth()];
+    const date = a.getDate();
+    const formatedDate = `${date} ${month} ${year}`
+    return formatedDate;
   }
 
+  //convert time
+  timeConverter12hr(unixTimestamp, timezone){
+    let dateObj = new Date(unixTimestamp * 1000);
+    
+    //here we get the country's timezone
+    const utc_offset = new Date(timezone).getTimezoneOffset();
+    //  console.log(utc_offset);
+
+    dateObj.setMinutes(dateObj.getMinutes() + utc_offset);
+
+    //we're converting the time based on Asia's timezone UTC +8
+    const country_offset = 8*60;
+    
+    const convertedTime = dateObj.setMinutes(dateObj.getMinutes() + country_offset);
+    const time  = new Date(convertedTime);
+    let hours = time.getHours(); // gives the value in 24 hours format
+    const AmOrPm = hours >= 12 ? 'PM' : 'AM';
+    hours = (hours % 12) || 12;
+    const minutes = time.getMinutes() ;
+    const formattedTime = `${hours}:${minutes} ${AmOrPm} UTC +8`; 
+
+    return formattedTime;
+  }
+
+
+  //kelvin to celsius
+  toCelcius(temp){
+    return Math.round(parseFloat(temp-273.15))
+  }
+
+  //kelvin to fahrenheit
+  toFahrenheit(temp){
+    const tempF = parseFloat(temp);
+    return Math.round(((tempF-273.15)*1.8)+32);
+  }
 }
