@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <title>Form Validation with Regular Expression</title>
+  </head>
+  <body style="background-color: #92b4f4; color: #ffffff;">
+    <div class="container mb-5" style="width: 500px;">
+      <div class="container p-5 d-flex flex-column align-items-center">
+        <h2 class="heading text-center">
+          Form Validation
+        </h2>
+        <small class="lead" style="color: #212121;"
+          >JavaScript Regular Expression</small
+        >
+      </div>
+      <form
+        class="shadow p-5 rounded"
+        style="background-color: #cfdee7; color: #212121;"
+      >
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            aria-describedby="nameHelp"
+            placeholder="Enter your name"
+          />
+          <small id="nameHelp" class="invalid-feedback"
+            >Name must be between 5-10 characters</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+          <small id="emailHelp" class="invalid-feedback"
+            >Please input a valid email.</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="zipcode">Zip Code</label>
+          <input
+            type="text"
+            class="form-control"
+            id="zipcode"
+            aria-describedby="zipHelp"
+            placeholder="Enter your zipcode"
+          />
+          <small id="zipHelp" class="invalid-feedback"
+            >Please input a valid zipcode.</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            aria-describedby="phoneHelp"
+            placeholder="+63 9********* or 09*********"
+          />
+          <small id="phoneHelp" class="invalid-feedback"
+            >Please input a valid phone number.</small
+          >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
